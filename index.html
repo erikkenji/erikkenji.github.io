@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Calculator Advanced 3D</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Calculadora META</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="col-lg-6">
+                        <h3 class="mb-4">Dado Mensal</h3>
+                        <div id="form-message-warning" class="mb-4"></div>
+                        <div id="form-message-success" class="mb-4">
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="totalrecebidos">Total Recebidos (Beans)</label>
+                                        <input class="form-control" type="text" id="totalrecebidos" name="totalrecebidos" placeholder="Total Beans Mês">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="porcentagemFora">Fora (Porcentagem)</label>
+                                        <input class="form-control" type="text" id="porcentagemFora" name="porcentagemFora" placeholder="% Fora" onchange="AutoCompletePercBr()">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="porcentagemBr">BR (Porcentagem)</label>
+                                        <input class="form-control" type="text" id="porcentagemBr" name="porcentagemBr" placeholder="% Br" onchange="AutoCompletePercFora()">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="recebidosTotalFora">Fora (Beans)</label>
+                                        <input class="form-control" type="text" id="recebidosTotalFora" name="recebidosTotalFora" placeholder="Recebidos Fora" onchange="AutoCompleteRecBr()">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="recebidosTotalBr">BR (Beans)</label>
+                                        <input class="form-control" type="text" id="recebidosTotalBr" name="recebidosTotalBr" placeholder="Recebido Br" onchange="AutoCompleteRecFora()">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="recebidosDiaFora">Recebido Dia Fora (Beans)</label>
+                                        <input class="form-control" type="text" id="recebidosDiaFora" name="recebidosDiaFora" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="recebidosDiaBr">Recebido Dia BR (Beans)</label>
+                                        <input class="form-control" type="text" id="recebidosDiaBr" name="recebidosDiaBr" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" onclick="Calcular()">Calcular</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-stretch">
+                        <h3 class="mb-4">Simulação</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="totalrecebidos2">Total Recebidos (Beans)</label>
+                                        <input readonly="true" class="form-control" type="text" id="totalrecebidos2" name="totalrecebidos2">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="porcentagemFora2">Fora (Porcentagem)</label>
+                                        <input readonly="true" class="form-control" type="text" id="porcentagemFora2" name="porcentagemFora2">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="porcentagemBr2">BR (Porcentagem)</label>
+                                        <input readonly="true" class="form-control" type="text" id="porcentagemBr2" name="porcentagemBr2">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="recebidosTotalFora2">Fora (Beans)</label>
+                                        <input readonly="true" class="form-control" type="text" id="recebidosTotalFora2" name="recebidosTotalFora2">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="recebidosTotalBr2">BR (Beans)</label>
+                                        <input readonly="true" class="form-control" type="text" id="recebidosTotalBr2" name="recebidosTotalBr2">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="equilibrar2">Beans Necessários</label>
+                                        <input readonly="true" class="form-control" type="text" id="equilibrar2" name="equilibrar2">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var recebidosTotal = 0;
+        var recebidosTotalFora = 0;
+        var recebidosTotalBr = 0;
+        var recebidosDiaFora = 0;
+        var recebidosDiaBr = 0;
+        var porcentagemFora = 0;
+        var porcentagemBr = 0;
+        var equilibrar = 0;
+		var erro = null;
+        
+        function Calcular() {
+			erro = null;
+        	recebidosTotal = document.getElementById("totalrecebidos").value;
+        	porcentagemFora = document.getElementById("porcentagemFora").value;
+        	porcentagemBr = document.getElementById("porcentagemBr").value;
+        
+        	recebidosTotalFora = document.getElementById("recebidosTotalFora").value;
+        	recebidosTotalBr = document.getElementById("recebidosTotalBr").value;
+    		recebidosDiaFora = document.getElementById("recebidosDiaFora").value;
+          	recebidosDiaBr = document.getElementById("recebidosDiaBr").value;
+
+			if(recebidosDiaFora == '') recebidosDiaFora = 0;
+			if(recebidosDiaBr == '') recebidosDiaBr = 0;
+
+			if(recebidosTotal == ''){
+				erro = 'Preencher Campo Obrigatório';
+			} 
+			if(porcentagemFora == ''){
+				if(erro == null){
+					erro = 'Preencher Campo Obrigatório';
+				}
+			} 
+			if(porcentagemBr == ''){
+				if(erro == null){
+					erro = 'Preencher Campo Obrigatório';
+				}
+			} 
+			if(recebidosTotalFora == ''){
+				if(erro == null){
+					erro = 'Preencher Campo Obrigatório';
+				}
+			} 
+			if(recebidosTotalBr == ''){
+				if(erro == null){
+					erro = 'Preencher Campo Obrigatório';
+				}
+			} 
+			
+         	if(erro == null){				
+				var simFora = 0;
+				var simBr =  0;
+				simFora = parseInt(recebidosTotalFora) + parseInt(recebidosDiaFora);
+				simBr =  parseInt(recebidosTotalBr) + parseInt(recebidosDiaBr);
+				 
+				recebidosTotal = simFora + simBr;
+				
+				equilibrar = simBr;
+				document.getElementById("recebidosTotalFora2").value = recebidosTotalFora;
+				document.getElementById("recebidosTotalBr2").value = recebidosTotalBr;
+				 
+				 //alert(document.getElementById("totalrecebidos").value)
+				while(porcentagemBr<61){
+					equilibrar++;
+					recebidosTotal++;
+					porcentagemBr = Math.round((equilibrar*100)/recebidosTotal); 
+					 
+				}
+				
+				porcentagemFora = 100 - porcentagemBr;
+				document.getElementById("equilibrar2").value = equilibrar - recebidosTotalBr;
+				document.getElementById("totalrecebidos2").value = recebidosTotal;
+				document.getElementById("porcentagemBr2").value = porcentagemBr;
+				document.getElementById("porcentagemFora2").value = porcentagemFora;
+				document.getElementById("recebidosTotalFora2").value = Math.round((recebidosTotal * porcentagemFora) / 100) + " Beans";
+				document.getElementById("recebidosTotalBr2").value = Math.round((recebidosTotal * porcentagemBr) / 100);
+				reset();
+			}else{
+				alert(erro);
+			}
+				
+		}
+
+		function reset(){
+			document.getElementById("totalrecebidos").value = '';
+        	document.getElementById("porcentagemFora").value = '';
+        	document.getElementById("porcentagemBr").value = '';
+        
+        	document.getElementById("recebidosTotalFora").value = '';
+        	document.getElementById("recebidosTotalBr").value = '';
+    		document.getElementById("recebidosDiaFora").value = '';
+          	document.getElementById("recebidosDiaBr").value = '';
+		}
+		
+        
+        function CalcularPerc(){
+            totalrecebidos = document.getElementById("totalrecebidos").value;
+            recebidosTotalBr = document.getElementById("recebidosTotalBr").value;
+            recebidosTotalFora = document.getElementById("recebidosTotalFora").value;
+        
+            porcentagemBr = (recebidosTotalBr * 100) / totalrecebidos;
+            porcentagemFora = (recebidosTotalFora * 100) / totalrecebidos; 
+        
+            document.getElementById("porcentagemBr").value = porcentagemBr;
+            document.getElementById("porcentagemFora").value = porcentagemFora;
+            
+        }
+        
+        function CalcularRec(){
+            totalrecebidos = document.getElementById("totalrecebidos").value;
+            porcentagemBr = document.getElementById("porcentagemBr").value;
+            porcentagemFora = document.getElementById("porcentagemFora").value;
+        
+            recebidosTotalBr = (porcentagemBr * totalrecebidos) / 100;
+            recebidosTotalFora = (porcentagemFora * totalrecebidos) / 100;
+        
+            document.getElementById("recebidosTotalBr").value = recebidosTotalBr;
+            document.getElementById("recebidosTotalFora").value = recebidosTotalFora;
+        }
+        
+        function AutoCompletePercBr(){
+            document.getElementById("porcentagemBr").value = 100 - document.getElementById("porcentagemFora").value;
+            CalcularRec();
+        }
+        
+        function AutoCompletePercFora(){
+            document.getElementById("porcentagemFora").value = 100 - document.getElementById("porcentagemBr").value;
+            CalcularRec();
+        }
+        
+        function AutoCompleteRecBr(){
+            document.getElementById("recebidosTotalBr").value = document.getElementById("totalrecebidos").value - document.getElementById("recebidosTotalFora").value;
+            CalcularPerc();
+        }
+        
+        function AutoCompleteRecFora(){
+            document.getElementById("recebidosTotalFora").value = document.getElementById("totalrecebidos").value - document.getElementById("recebidosTotalBr").value;
+            CalcularPerc();
+        }
+        
+    </script>
+</html>
